@@ -58,7 +58,5 @@ let players =[
             }
             
     })
-
-
   
 module.exports = router;
