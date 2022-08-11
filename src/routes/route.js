@@ -1,60 +1,44 @@
 const express = require('express');
 const router = express.Router();
 
-let players =[
-    {
-        "name":"manish",
-        "dob" :"1/1/1995",
-        "gender":"male",
-        "city":"jalandhar",
-        "sports":[
-            "swimming"
-        ],
-    },
-     
-    {
-        "name":"gopal",
-        "dob" :"1/09/1995",
-         "gender": "male",
-         "city" :"delhi",
-         "sports":[
-            "soccer"
-         ],
-    },
-      
-     {
-         "name":"lokesh",
-         "dob" :"1/1/1990",
-         "gender":"male",
-          "city":"mumbai",
-          "sports":[
-            "soccer"
-          ],
-          
+    let persons=[
+        {
+            name:"PK",
+            age:10,
+            votingStatus:false
         },
-        
+        {
+            name:"Sk",
+            age:20,
+            votingStatus:false
+        },
+        {
+            name:"AA",
+            age:70,
+            votingStatus:false
+        },
+        {
+            name:"HO",
+            age:40,
+            votingStatus:false
+        }
     ]
 
-   router.post('/players', function(req, res){
+   router.post('/voting', function(req, res){
 
-    let newPlayer = req.body
-    let newPlayersName = newPlayer.name
-    let isNameRepeated = false
-
-    
-     for(let i=0; i<players.length; i++){
-        if(players[i].name == newPlayersName){
-            isNameRepeated = true;
+       for(let i=0; i<persons.length; i++){
+        if(persons.age>=18){
+            votingStatus = true;
             break;
         }
      }
 
-            if(isNameRepeated == true){
-                res.send(' name already exixts')
+            if(persons.age<18){
+                res.send(persons.votingStatus=false)
             }else
             {
-                players.push(newPlayer)
-                res.send(players)
+                persons.votingStatus.push(true)
+                res.send(persons)
             }
             
     })
