@@ -25,22 +25,20 @@ const router = express.Router();
     ]
 
    router.post('/voting', function(req, res){
+let inputAge= req.query.votingAge
+// let EligiblePersons=[]
+//        for(let i=0; i<persons.length; i++){
+//         if(persons[i].age>votingAge){
+//             persons[i].votingStatus = true;
+//             EligiblePersons.push(persons[i])
+//         }
+//      }
+//      console.log({persons:EligiblePersons, status:true})
+//       res.send({persons:EligiblePersons, status:true})
 
-       for(let i=0; i<persons.length; i++){
-        if(persons.age>=18){
-            votingStatus = true;
-            break;
-        }
-     }
-
-            if(persons.age<18){
-                res.send(persons.votingStatus=false)
-            }else
-            {
-                persons.votingStatus.push(true)
-                res.send(persons)
-            }
-            
+    persons.map(per=>(per.age>inputAge)?per.votingStatus=true:per.votingStatus);
+   let final=persons.filter(pson=>{if(pson.votingStatus==true){return pson.name}})
+   res.send({data:final})
     })
   
 module.exports = router;

@@ -1,0 +1,1 @@
+"mongodb+srv://myFirsh:aakash1234@cluster0.jhvz9b4.mongodb.net/?retryWrites=true&w=majority"
