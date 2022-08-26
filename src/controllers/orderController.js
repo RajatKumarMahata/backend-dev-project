@@ -3,7 +3,7 @@ const productModel= require("../models/productModel")
 const userModel= require("../models/userModel")
 
 
-const createOrder= async function (req, res) {
+const createOrder= async  (req, res)=> {
     let data= req.body
     let UA=data.userId
     let PA=data.productId
@@ -28,7 +28,7 @@ let valiedProduct= await productModel.findById(PA).select({_id:1})
                 console.log(updateUser)
                   return res.send({msg: savedData})
               }
-        return res.send({msg:"In saficent balance"})
+        return res.send({msg:"Insufficiant balance"})
             }
  
  let savedData= await orderModel.create(data)

@@ -8,8 +8,8 @@ const orderController= require("../controllers/orderController")
 const commonMW = require ("../middlewares/commonMiddlewares")
 
 
-router.post ("/createUser",commonMW.isFreeMid,UserController.createUser)
 router.post ("/createPruduct",productController.createModel)
+router.post ("/createUser",commonMW.isFreeMid,UserController.createUser)
 router.post("/createOrder", orderController.createOrder)
 
 
