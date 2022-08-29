@@ -114,9 +114,14 @@ const postMessage = async function (req, res) {
     //return the updated user document
     return res.send({status: true, data: updatedUser})
 }
-
+const deleteDetails = async function (req, res) {
+  let userId=req.params.userId
+  let update = await userModel.findByIdAndUpdate({ _id: userId }, { isDeleted: true }, { new: true })
+  res.send(update)
+}
 module.exports.createUser = createUser;
 module.exports.getUserData = getUserData;
 module.exports.updateUser = updateUser;
 module.exports.loginUser = loginUser;
 module.exports.postMessage = postMessage
+module.exports.deleteUser=deleteDetails
