@@ -1,13 +1,17 @@
+const mongoose = require('mongoose')
+const jwt = require('jsonwebtoken')
+const userModel = require('../models/userModel')
+
 const authenticate = async function (req, res, next) {
   let token = req.headers["x-auth-token"];
   if (!token) {
     return res.send("Header is missing");
   }
-  let decodedToken = jwt.verify(token, "I am learning the creation of jwt");
+  let decodedToken = jwt.verify(token, "ZAakosmk");
   if (!decodedToken) {
     return res.send("Not a valid token");
-  }
-  let userId = req.params.userId;
+  } 
+  let userId = req.params.userId
   let idCheck = mongoose.Types.ObjectId.isValid(userId);
   if (!idCheck) {
     return res.send("Not a valid userID");
@@ -15,7 +19,8 @@ const authenticate = async function (req, res, next) {
   let check = await userModel.findById(userId);
   if (!check) {
     return res.send("No such user exist");
-  }
+ }
+  req.loggedInUser=decodedToken.userId
   next();
 };
 

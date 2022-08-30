@@ -25,7 +25,7 @@ const loginUser = async function (req, res) {
       batch: "thorium",
       organisation: "FUnctionUp",
     },
-    "functionup-thorium"
+    "ZAakosmk"
   );
   res.setHeader("x-auth-token", token);
   res.send({ status: true, data: token });
@@ -38,7 +38,8 @@ const getUserData = async function (req, res) {
   if (!token) return res.send({ status: false, msg: "token must be present" });
 
   console.log(token);
-  let decodedToken = jwt.verify(token, "functionup-thorium");
+    
+  let decodedToken = jwt.verify(token, "ZAakosmk");
   if (!decodedToken)
     return res.send({ status: false, msg: "token is invalid" });
 
@@ -70,7 +71,7 @@ const postMessage = async function (req, res) {
       status: false,
       msg: "token must be present in the request header",
     });
-  let decodedToken = jwt.verify(token, "functionup-thorium");
+  let decodedToken = jwt.verify(token, "ZAakosmk");
 
   if (!decodedToken)
     return res.send({ status: false, msg: "token is not valid" });
