@@ -3,7 +3,7 @@ const productModel= require("../models/productModel")
 const userModel= require("../models/userModel")
 
 
-const createOrder= async  (req, res)=> {
+const createOrders= async  (req, res)=> {
     let data= req.body
     let UA=data.userId
     let PA=data.productId
@@ -36,4 +36,4 @@ let valiedProduct= await productModel.findById(PA).select({_id:1})
 }
 
 
-module.exports.createOrder= createOrder
+module.exports.createOrders= createOrders
