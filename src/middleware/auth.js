@@ -20,9 +20,10 @@ const authenticate = async function (req, res, next) {
   }
   let check = await userModel.findById(userId);
   if (!check) {
-    return res.status(404).send("No such user exist");
+    return res.status(404).send("Not found");
  }
-  req.loggedInUser=decodedToken.userId
+  req.loggedInUser=decodedToken.userId 
+  
   next();
 
 }catch(error){
