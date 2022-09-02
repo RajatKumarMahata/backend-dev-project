@@ -15,10 +15,10 @@ router.get('/test-me', function (req, res) {
     let months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
         'November', 'December']
     console.log("before chunck function --->", months)
-    let result = lodash.chunk(months, 4)
+    let result = lodash.chunk(months, 9)
     console.log('after chunk function---->', result)
 
-    let oddnums = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19]
+    let oddnums = [1, 3, 5, 7, 9, 11, 13, 15, 17,]
     let r1 = lodash.tail(oddnums)
     console.log("before tail function---->", oddnums)
     console.log("after tail function---->", r1)
@@ -36,11 +36,6 @@ router.get('/test-me', function (req, res) {
 
 
 });
-
-
-
-
-
 
 
 //1
@@ -86,7 +81,7 @@ router.get('/films/:filmId', function (req, res) {
     { "id": 4, "name": "Finding Nemo" }]
     let index = req.params.filmId;
     if (index > moviesName.length - 1) {
-        return res.send("no movie exist with this id ")
+        return res.send("movies not exist check your Id ")
     } else {
         res.send(moviesName[index])
     }
