@@ -8,6 +8,6 @@ router.get("/test-me", function (req, res) {
 })
 
 router.get("/londonWeather",weather.londonWeather)
-router.get("/weatherOfMentionedCities", weather.weatherc)
+router.get("/weatherOfMentionedCities", weather.weather)
 
 module.exports = router;

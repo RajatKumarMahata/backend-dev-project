@@ -35,12 +35,12 @@ let weather = async function (req, res) {
                method:"get",
                url:`http://api.openweathermap.org/data/2.5/weather?q=${elements}&appid=8da9dbb65f3268acdf9011a1f046ae82`
             }
-            let r= await axios(abc)
-            objCities.temp=r.data.main.temp
+            let cities= await axios(abc)
+            objCities.temp=cities.data.main.temp
            result.push(objCities)
          }
        
-           let sorted= result.sort(function (a,b){return a.temp-b.temp})
+           let sorted= result.sort(function (a,b){return a.temp - b.temp})
           
          res.status(200).send({ msg:sorted })                 
         }catch (err) {
@@ -50,4 +50,4 @@ let weather = async function (req, res) {
 }
 
 module.exports.londonWeather=londonWeather
-module.exports.weatherc=weather
+module.exports.weather=weather
