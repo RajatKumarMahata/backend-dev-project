@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-// const UserModel= require("../models/userModel.js")
-// const UserController= require("../controllers/userController")
-// const bookController1 =require("../controllers/newController")
+
 const BookController= require("../controllers/booksController")
 
 router.post("/author",BookController.authorData)
