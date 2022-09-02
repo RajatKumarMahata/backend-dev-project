@@ -8,8 +8,8 @@ function printMonth(){
     console.log("The current Month is : ", now.getMonth()+1)
     getBatchInfo
 }
-function getBatchInfo(){
-    console.log(' our batch is --> plutonium,Week 3 Day 5,the topic of today nodejs module system')
+function getBatchInfo() {
+    console.log(' our batch is --> plutonium,Week 3 Day 4,the topic of today nodejs module system')
         
 }
 module.exports.printDate=printDate
