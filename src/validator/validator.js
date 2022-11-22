@@ -10,7 +10,7 @@ const isValidBody = (data) => {
 //name
 const isValidName = (name) => {
     const nm = name.trim()
-    const regex =/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z])$/.test(nm)
+    const regex =/^[a-zA-Z" "]+(([',. -][a-zA-Z ])?[a-zA-Z])$/.test(nm)
     return regex
 }
 

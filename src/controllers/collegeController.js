@@ -9,19 +9,22 @@ const createCollege = async function (req, res) {
         
         if (!isValidBody(requestBody)) return res.status(400).send({ status: false, messege: "plz provide request body" })
         if (!isValidAbvr(name))  return res.status(400).send({ status: false, messege: "plz provide valid name" })
-        //if (!isValidName(fullName))  return res.status(400).send({ status: false, messege: "plz provide valid fullName" })
+        if (!isValidName(fullName))  return res.status(400).send({ status: false, messege: "plz provide valid fullName" })
         if (!isValidUrl(logoLink))  return res.status(400).send({ status: false, messege: "Invalid logoLink" })
+        let duplicateName= await collegeModel.findOne({ name })
+        if (duplicateName) return res.status(404).send({ status: false, msg: "Name already exists." })
+
         
         // Create college
         const newCollege = await collegeModel.create(requestBody)
 
-        const obj = {
-            name : newCollege.name,
-            fullName : newCollege.fullName,
-            logoLink : newCollege.logoLink,
-            isDeleted : newCollege.isDeleted
-        }
-        return res.status(201).send({ status: true, messege: 'college register succesefully', data: obj })
+        // const obj = {
+        //     name : newCollege.name,
+        //     fullName : newCollege.fullName,
+        //     logoLink : newCollege.logoLink,
+        //     isDeleted : newCollege.isDeleted
+        // }
+        return res.status(201).send({ status: true, messege: 'college register succesefully', data: newCollege })
     }
     catch (err) {
         return res.status(500).send({ status: false, messege: err.message })
@@ -29,7 +32,7 @@ const createCollege = async function (req, res) {
 }
 
 
-const getCollege = async (req, res) => {
+const getCollege = async function(req, res) {
     try {
  const name = req.query.collegeName;
         if (!name) return res.status(400).send({ status: false, massege: 'collegeName is required for query.' });
